@@ -1,0 +1,23 @@
+﻿@model WebBanThuoc.Data.ViewModels.PhanLoaiThuoc.PhanLoaiThuocVM
+
+
+<div class="row">
+    <div class="col-md-9">
+        <form asp-action="Update" id="formupdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control id" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoaiThuoc" class="control-label"></label>
+                <input asp-for="LoaiThuoc" class="form-control" />
+                <span asp-validation-for="LoaiThuoc" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

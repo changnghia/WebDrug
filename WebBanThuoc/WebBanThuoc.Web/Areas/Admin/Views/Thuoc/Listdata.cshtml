@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebBanThuoc.Data.ViewModels.Thuoc.ListThuocVM>
+
+
+
+@foreach (var item in Model)
+{
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Id)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.TenThuoc)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DVT)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.GiaTien)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.SoLuong)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.LoaiThuoc)
+		</td>
+		<td>
+			<a class="btn btn-secondary btn-edit" asp-action="EditThuoc" asp-controller="Thuoc" asp-route-id="@item.Id">
+				<i class="fa-solid fa-pen-to-square"></i>
+				Sửa
+			</a>
+			<button id="delete" class="btn btn-danger js-delete" data-id="@item.Id">
+				<i class="fa fa-trash" aria-hidden="true"></i>
+			</button>
+		</td>
+	</tr>
+}
+

@@ -1,0 +1,251 @@
+﻿@model IEnumerable<WebBanThuoc.DTOs.DonHang>
+
+@{
+	ViewData["Title"] = "ListCartofUser";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/client/CssLiscCartofUser/css/checkout.min.css" rel="stylesheet" />
+<link href="~/client/CssLiscCartofUser/css/checkout.vender.min.css" rel="stylesheet" />
+<link href="~/client/CssLiscCartofUser/css/custom.css" rel="stylesheet" />
+<link href="~/font-awesome/css/all.css" rel="stylesheet" />
+
+
+<style>
+	a,
+	.radio__label__icon,
+	.payment-due__price,
+	.spinner--active,
+	.icon-print,
+	.alert--info,
+	.order-summary-toggle__total-recap {
+		color: #000000;
+	}
+
+	.input-checkbox:checked,
+	.input-radio:checked {
+		-webkit-box-shadow: 0 0 0 10px #000000 inset;
+		box-shadow: 0 0 0 10px #000000 inset;
+	}
+
+	.product-thumbnail__quantity {
+		background-color: #000000;
+	}
+
+	a:hover,
+	a:focus,
+	.icon-print:hover {
+		color: #000000;
+	}
+
+	.field__input:focus,
+	.select2-selection:focus,
+	.select2-search__field:focus {
+		border-color: #000000;
+		box-shadow: 0 0 0 1px #000000;
+	}
+
+	.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+		background-color: #000000;
+	}
+
+	.btn {
+		background-color: #000000;
+		border-color: #000000;
+	}
+
+		.btn:focus {
+			outline-color: #000000;
+		}
+
+		.btn.disabled {
+			background-color: #3F3F3F;
+			border-color: #3F3F3F;
+		}
+
+		.btn:hover {
+			background-color: #000000;
+			border-color: #000000;
+		}
+
+	.btn {
+		color: #FFFFFF;
+	}
+
+	.product-thumbnail__quantity {
+		color: #FFFFFF;
+	}
+</style>
+
+	@foreach (var item in Model)
+	{
+		<div style="border:1px solid">
+
+		<aside>
+			<button class="order-summary-toggle" data-toggle="#order-summary" data-toggle-class="order-summary--is-collapsed">
+				<span class="wrap">
+					<span class="order-summary-toggle__inner">
+						<span class="order-summary-toggle__text expandable">
+							Đơn hàng
+						</span>
+						<span class="order-summary-toggle__total-recap" data-bind="getTextTotalPrice()"></span>
+					</span>
+				</span>
+			</button>
+		</aside>
+		<div class="content">
+			<form data-tg-refresh="checkout" id="checkoutForm" method="post" asp-action="">
+				<input type="hidden" name="_method" value="patch" />
+				<div class="wrap">
+					<main class="main">
+						<header class="main__header">
+							<div class="logo logo--center">
+								<h1 class="shop__name">									
+										Đơn hàng									
+								</h1>
+							</div>
+						</header>
+						<div class="main__content">
+							<article class="animate-floating-labels row">
+								<div class="col col--two">
+									<section class="section">
+
+										<div class="section__content">
+											<div class="fieldset">
+												<div class="field field--show-floating-label field--disabled">
+													<input name="email" type="hidden" value="@ViewBag.Email">
+													<div class="field__input-wrapper">
+														<label for="email" class="field__label">
+															Tên khách hàng
+														</label>
+														<b>@item.TenKH</b>
+													</div>
+													<div class="field__input-wrapper">
+														<label for="email" class="field__label">
+															Địa chỉ
+														</label>
+														<b>@item.DiaChi</b>
+													</div>
+													<div class="field__input-wrapper">
+														<label for="email" class="field__label">
+															Số điện thoại
+														</label>
+														<b>@item.SDT</b>
+													</div>
+													<div class="field__input-wrapper">
+														<label for="email" class="field__label">
+															Tổng số tiền
+														</label>
+														<b>@item.TongSoTien</b>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+
+								</div>
+							</article>
+							<div class="field__input-btn-wrapper field__input-btn-wrapper--vertical hide-on-desktop">
+								<button type="submit" class="btn btn-checkout spinner" data-bind-class="{'spinner--active': isSubmitingCheckout}" data-bind-disabled="isSubmitingCheckout || isLoadingReductionCode">
+									<span class="spinner-label">ĐẶT HÀNG</span>
+									<svg xmlns="http://www.w3.org/2000/svg" class="spinner-loader">
+										<use href="#spinner"></use>
+									</svg>
+								</button>
+							</div>
+							<div id="common-alert" data-tg-refresh="refreshError">
+								<div class="alert alert--danger hide-on-desktop">
+								</div>
+							</div>
+						</div>
+					</main>
+					<aside class="sidebar">
+						<div class="sidebar__header">
+							<h2 class="sidebar__title">
+								Đơn hàng (@item.chiTietDonHangs.Count sản phẩm)
+							</h2>
+						</div>
+						<div class="sidebar__content">
+							<div id="order-summary" class="order-summary order-summary--is-collapsed">
+								<div class="order-summary__sections">
+									<div class="order-summary__section order-summary__section--product-list order-summary__section--is-scrollable order-summary--collapse-element">
+										<table class="product-table">
+											<caption class="visually-hidden">Chi tiết đơn hàng</caption>
+											<thead class="product-table__header">
+												<tr>
+													<th>
+														<span class="visually-hidden">Ảnh sản phẩm</span>
+													</th>
+													<th>
+														<span class="visually-hidden">Mô tả</span>
+													</th>
+													<th>
+														<span class="visually-hidden">Sổ lượng</span>
+													</th>
+													<th>
+														<span class="visually-hidden">Đơn giá</span>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var cart in item.chiTietDonHangs)
+												{
+													<tr class="product">
+														<td class="product__image">
+															<div class="product-thumbnail">
+																<div class="product-thumbnail__wrapper" data-tg-static>
+																	<img src="/img/@cart.thuoc.duongdan" alt="" class="product-thumbnail__image">
+																</div>
+																<span class="product-thumbnail__quantity">@cart.SoLuong</span>
+															</div>
+														</td>
+														<th class="product__description">
+															<span class="product__description__name">
+																@cart.thuoc.TenThuoc
+															</span>
+														</th>
+														<td class="product__quantity visually-hidden"><em>Số lượng:</em>@cart.SoLuong</td>
+														<td class="product__price">@cart.Gia</td>
+													</tr>
+												}
+
+											</tbody>
+										</table>
+									</div>
+									@if (item.Trangthai)
+									{ <a class="btn btn-success" disabled>Đã xác nhận</a>
+									} else { 
+									<a class="btn btn-danger" asp-action="XacDanDonHang" asp-controller="Home" asp-route-id="@item.Id">Chưa xác nhận</a>
+									}
+									
+								</div>
+
+						   </div>
+
+					   </div>
+
+				   </aside>
+
+			   </div>
+
+		   </form>
+
+		   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+			   <symbol id="spinner">
+
+				   <svg viewBox="0 0 30 30">
+
+					   <circle stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+								stroke-dasharray="85%" cx="50%" cy="50%" r="40%">
+							<animateTransform attributeName="transform" type="rotate" from="0 15 15" to="360 15 15"
+											  dur="0.7s" repeatCount="indefinite" />
+						</circle>
+					</svg>
+				</symbol>
+			</svg>
+		</div>
+		</div>
+	}
+
+

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebBanThuoc.Data.ViewModels.Thuoc.ListThuocVM>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh sách thuốc</h1>
+
+<p class="m-2">
+	<a class="btn btn-outline-primary" asp-action="AddThuoc">Thêm thuốc mới</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				Tên Thuốc
+			</th>
+			
+			<th>
+				Đơn vị tính
+			</th>
+			<th>
+				Giá tiền
+			</th>
+			<th>
+				Số lượng
+			</th>
+			<th>
+				Loại Thuốc
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody id="tbody">
+		<partial name="Listdata" />
+	</tbody>
+</table>
+<partial name="_Pager"/>
+
+@section js{
+	<script src="~/admin/Thuoc/thuoc.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - WebBanThuoc.Web</title>
+	<link href="~/client/css/style.css" rel="stylesheet" />
+
+	<link href="~/client/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/client/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="~/client/css/animate.css" rel="stylesheet" />
+	<link href="~/client/css/owl.carousel.css" rel="stylesheet" />
+	<link href="~/client/css/owl.theme.default.min.css" rel="stylesheet" />
+	<link href="~/client/css/tooplate-style.css" rel="stylesheet" />
+	<style>
+		.bg-success-important{
+			background-color: green!important;
+		}
+	</style>
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+	<!-- PRE LOADER -->
+	<section class="preloader">
+		<div class="spinner">
+
+			<span class="spinner-rotate"></span>
+
+		</div>
+	</section>
+
+
+	<!-- HEADER -->
+	<header>
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-4 col-sm-5">
+					<p>Welcome to a Professional Health Care</p>
+				</div>
+
+				<div class="col-md-8 col-sm-7 text-align-right">
+					<span class="phone-icon"><i class="fa fa-phone"></i> 0842142478	</span>
+					<span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 6:00 AM - 10:00 PM (Mon-Fri)</span>
+					<span class="email-icon"><i class="fa fa-envelope-o"></i> <a href="#">lephuc300101@gmai.com</a></span>
+				</div>
+
+			</div>
+		</div>
+	</header>
+	<section class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+				</button>
+
+				<!-- lOGO TEXT HERE -->
+				<a href="index.html" class="navbar-brand" style="color:forestgreen">Nhà thuốc Phúc/Tín</a>
+			</div>
+
+			<!-- MENU LINKS -->
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					
+					@if (User.Identity.IsAuthenticated)
+					{
+					 <li>
+						<a class="dropdown-toggle smoothScroll" data-toggle="dropdown" aria-expanded="false">
+						Tài khoản
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" asp-action="ListCartofUser" asp-controller="DonHang">Đơn hàng của bạn</a>
+							<a class="dropdown-item" asp-action="Logout" asp-controller="User" asp-area="Admin">Đăng xuất</a>
+						</div>
+					 </li>
+					}
+					else
+					{
+						<li><a asp-action="Login" asp-controller="User" asp-area="Admin" class="smoothScroll">Đăng nhập</a></li>
+					}
+					
+					<li class="appointment-btn cart"><a class="fa fa-cart-arrow-down">Giỏ hàng</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="card showcart">
+		<i class="fa fa-times" aria-hidden="true" style="float:left"></i>
+		<h2>Giỏ hàng</h2>
+		<form action="">
+			<table>
+				<thead>
+					<tr>
+						<th>Sản phẩm</th>
+						<th>Giá</th>
+						<th>SL</th>
+						<th>Giá</th>
+					</tr>
+				</thead>
+				<tbody id="cart-body">
+					<!--
+					<tr>
+						<td style="display: flex; align-items: center;"><img style="width:70px" src="https://cdn.tgdd.vn/Products/Images/42/230529/iphone-13-pro-max-sierra-blue-600x600.jpg" alt="">Iphone13</td>
+						<td> <p><span>300.000</span><sup>đ</sup></p></td>
+						<td><input style="width:30px;outline:none;" type="number" value="1" min="1"></td>
+						<td style="cursor: pointer;">Xóa</td>
+					</tr> -->
+				</tbody>
+			</table>
+			<div style="text-align: right;" class="price-total">
+				<p style="font-weight: bold;">Tổng tiền: <span>0</span><sup>đ</sup></p>
+			</div>
+			<button asp-action="DatHang" asp-controller="DonHang">Đặt hàng</button>
+		</form>
+	</section>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer data-stellar-background-ratio="5">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-4 col-sm-4">
+					<div class="footer-thumb">
+						<h4 class="wow fadeInUp" data-wow-delay="0.4s">Liên lạc với chúng tôi</h4>
+						<p>Liên lạc với chúng tôi để nhận được sự tư vấn và hỗ trợ tốt nhất</p>
+
+						<div class="contact-info">
+							<p><i class="fa fa-phone"></i>0842142478</p>
+							<p><i class="fa fa-envelope-o"></i> <a href="#">lephuc300101@gmai.com</a></p>
+						</div>
+					</div>
+				</div>
+
+				
+
+				<div class="col-md-4 col-sm-4">
+					<div class="footer-thumb">
+						<div class="opening-hours">
+							<h4 class="wow fadeInUp" data-wow-delay="0.4s">Ngày mở cửa</h4>
+							<p>Thứ 2 - Thứ 6 <span>06:00 AM - 10:00 PM</span></p>
+							<p>Thứ 7 <span>09:00 AM - 08:00 PM</span></p>
+							<p>Chủ nhật <span>Đóng cửa</span></p>
+						</div>
+
+						<ul class="social-icon">
+							<li><a href="https://www.facebook.com/profile.php?id=100012678340486" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+							<li><a href="https://www.instagram.com/tin_thanhpham/" class="fa fa-instagram"></a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-12 col-sm-12 border-top">
+					<div class="col-md-4 col-sm-6">
+						<div class="copyright-text">
+							<p>
+								Phát triển bởi &copy; 2018 Your Company
+
+								| Design: <a rel="nofollow" href="https://www.facebook.com/tooplate" target="_parent">Tooplate</a>
+							</p>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+	</footer>
+	<script src="~/client/js/main.js" asp-append-version="true"></script>
+	<script src="~/client/js/jquery.js"></script>
+	<script src="~/client/js/bootstrap.min.js"></script>
+	<script src="~/client/js/jquery.sticky.js"></script>
+	<script src="~/client/js/jquery.stellar.min.js"></script>
+	<script src="~/client/js/wow.min.js"></script>
+	<script src="~/client/js/smoothscroll.js"></script>
+	<script src="~/client/js/owl.carousel.min.js"></script>
+	<script src="~/client/js/custom.js"></script>
+	<script src="~/client/js/cart/cart.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.product-items{
+    max-width: 1200px;
+    margin: auto;
+}
+.product-items{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ddd;
+    padding: 12px;
+}
+
+.product-item{
+    width: 19%;
+    background-color: #fff;
+    padding: 12px;
+    text-align: center;
+}
+.product-item img{
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.product-item button{
+    margin-top: 12px;
+    height: 30px;
+    padding: 0 12px;
+    cursor:  pointer;
+    border: none;
+    border-radius: 3px;
+    transition: 2s;
+}
+.product-item button:hover{
+    background-color: red;
+}
+/* ==================================Card================================ */
+.card{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+    z-index:1000;
+}
+.card h2{
+    margin-bottom: 20px;
+}
+.card table{
+    width: 100%;
+}
+.card table thead tr th:first-child{
+    text-align: left;
+}
+.card table tr td{
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+.card table thead tr th:last-child{
+    text-align: right;
+}
+.card table tbody tr td:last-child{
+    text-align: right;
+}
+/* ================== nav bar============= */
+.card{
+    position: fixed;
+    height: 100vh;
+    width: 400px;
+    right: 0;
+    top: 0;
+    background-color: #ddd;
+    padding: 12px 20px;
+    overflow: scroll;
+    right: -100%;
+    transition: 0.3s;
+
+}
+.card button{
+    margin-top: 12px;
+    height: 30px;
+    padding: 0 12px;
+    cursor:  pointer;
+    border: none;
+    border-radius: 3px;
+    transition: 1s;
+}
+.card button:hover{
+ background-color: brown;
+}
+.cart-icon i{
+ cursor: pointer;
+}
+.card i{
+    cursor: pointer;
+}

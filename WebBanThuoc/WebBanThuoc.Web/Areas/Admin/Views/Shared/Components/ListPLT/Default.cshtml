@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WebBanThuoc.DTOs.PhanLoaiThuoc>
+@{
+	int? selectedId = (int?)ViewBag.SelectedId;
+}
+@foreach (var item in Model)
+{
+	if (selectedId.HasValue && selectedId.Value == item.Id)
+	{
+		<option value="@item.Id" selected>@item.LoaiThuoc</option>
+	}
+	<option value="@item.Id">@item.LoaiThuoc</option>
+}
+

@@ -1,0 +1,52 @@
+﻿@model WebBanThuoc.Data.ViewModels.AddorUpdateNhaCungCapVM
+
+@{
+    ViewData["Title"] = "ThemNhaCungCap";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+<h1 class="mb-2"> Thêm nhà cung cấp</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<form asp-action="ThemNhaCungCap" autocomplete="off">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-group" hidden>
+					<label asp-for="Id" class="control-label"></label>
+					<input asp-for="Id" class="form-control" />
+					<span asp-validation-for="Id" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="TenNhaCungCap" class="control-label">Tên nhà cung cấp</label>
+					<input asp-for="TenNhaCungCap" class="form-control" />
+					<span asp-validation-for="TenNhaCungCap" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+					<input asp-for="DiaChi" class="form-control" />
+					<span asp-validation-for="DiaChi" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="SDT" class="control-label">Số điện thoại</label>
+					<input asp-for="SDT" class="form-control" />
+					<span asp-validation-for="SDT" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Gmail" class="control-label">Gmail</label>
+					<input asp-for="Gmail" class="form-control" />
+					<span asp-validation-for="Gmail" class="text-danger"></span>
+				</div>
+				<div class="form-group float-right">
+					<input type="submit" value="Thêm mới" class="btn btn-primary" />
+				</div>
+			</form>
+			<div>
+				<a asp-action="Index">Trở về danh sách</a>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
